@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="signin.css">
+  <title>Register Now</title>
+</head>
+
+<body>
+  <div class="form_box">
+    <h1>Register Now</h1>
+    <form name="signup" onsubmit="validateSignup()">
+      <div class="form_content">
+        <label for="name"></label>
+        <input type="text" name="name" id="firstname" required="required" placeholder="Enter first name"></input>
+      </div>
+      <div class="form_content">
+        <label for="name"></label>
+        <input type="text" name="name" id="lastname" required="required" placeholder="Enter last name"></input>
+      </div>
+      <div class="form_content">
+        <label for="email"></label>
+        <input type="text" name="email" id="email" required="required" placeholder="Email Address"></input>
+      </div>
+      <div class="form_content">
+        <label for="number"></label>
+        <input type="text" name="number" id="number" required="required" placeholder="Phone Number"><span
+          id="numloc"></span></input>
+      </div>
+      <div class="form_content">
+        <label for="location"></label>
+        <input type="location" name="location" id="location" required="required" placeholder="Location"></input>
+      </div>
+      <div class="form_content">
+        <label for="GovNo"></label>
+        <input type="name" name="GovNo" id="document_type" required="required" placeholder="Document Type"></input>
+      </div>
+      <div class="form_content">
+        <label for="upload" class="top">Profile Picture</label>
+        <input type="file" name="upload" id="name" class="file" placeholder="Profile Picture"></input>
+      </div>
+      <!-- <div class="radio">
+            <label for="radio" class="top1">Government Id Type</label>
+            <input type="radio" name="radio" required="required" placeholder="">Passport</input>
+            <input type="radio" name="radio" required="required" placeholder="">License</input>
+          </div> -->
+      <div class="form_content">
+        <label for="upload" class="top">Government Id Photo</label>
+        <input type="file" name="upload" id="upload" class="file" placeholder="Upload Documents"></input>
+      </div>
+      <div class="form_content">
+        <label for="password"></label>
+        <input type="password" name="password" id="password" required="required" placeholder="Password"></input>
+      </div>
+      <div class="button-panel">
+        <input type="submit" class="button" title="Sign In" value="Sign In"></input>
+      </div>
+    </form>
+
+
+    <div class="form-footer">
+      <p><a href="#">Already have an account? &nbsp;<span style="color: rgb(135, 148, 235)">Sign In</span> </a></p>
+    </div>
+    <div class="down">
+      <p><a href="index.html">Go Back <i></i></a></p>
+    </div>
+  </div>
+
+  <footer>Copyright © Dial100 2023 Right Reserved.</footer>
+
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <script src="script.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      toastr.options = {
+        "closeButton": true,
+        "progressBar": true
+      }
+      $("form").submit(function (event) {
+        var formData = {
+          firstname: $("#firstname").val(),
+          lastname: $("#lastname").val(),
+          email: $("#email").val(),
+          phone_number: $("#number").val(),
+          location: $("#location").val(),
+          password: $("#password").val(),
+          document_type: $("#document_type").val()
+        };
+
+        $.ajax({
+          type: "POST",
+          url: "http://localhost:5555/api/v1/auth/register",
+          data: formData,
+          dataType: "json",
+          encode: true,
+          statusCode: {
+            200: function (data) {
+              window.location.replace("signin.html");
+            },
+            422: function () {
+              toastr.error("Something went wrong");
+            }
+          }
+        })
+
+        event.preventDefault();
+      });
+    });
+  </script>
+</body>
+
+</html>

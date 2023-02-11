@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="report_case.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+  <title>100</title>
+</head>
+
+
+<div class="container">
+  <div class="form-part">
+    <h2 class="head"><b>Crime Report Form</b></h2>
+    <p class="para">Report your crime by filling form down below. Do fill the form sincerely!!</p>
+
+    <!-- <div class="form-inputs"> -->
+    <form>
+      <div class="sqr-input">
+        <div class="text-input margin-bottom-zero">
+          <div class="sqr-input">
+            <div class="text-input" style="width: 250px;">
+              <label for="fname">Full name</label>
+              <input type="text" name="fname" id="fullname">
+            </div>
+            <!-- <div class="text-input">
+            <label for="lname">Last Name</label>
+            <input type="text" name="lnaem" id="lnaem">
+          </div> -->
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <div class="text-input">
+          <label for="phone_number">Phone no.</label>
+          <input type="number" name="phone" id="phone">
+        </div>
+        <div class="clearfix"></div>
+      </div>
+
+      <div class="text-input">
+        <label for="email">Email Address</label>
+        <input type="email" name="email" id="email" required="email">
+      </div>
+
+
+      <div class="text-input">
+        <label for="address">Crime Spot</label>
+        <input type="text" name="crime_spot" id="crimespot" required="text">
+      </div>
+
+      <div class="cub-input">
+        <div class="text-input">
+          <label for="street">Street</label>
+          <input type="text" name="street" id="street" required="text">
+        </div>
+
+        <div class="text-input">
+          <label for="postal_code">Postal Code</label>
+          <input type="number" name="postalcode" id="postalcode" required="text">
+        </div>
+
+        <div class="text-input">
+          <label for="city">City</label>
+          <input type="text" name="city" id="city">
+        </div>
+
+        <div class="clearfix"></div>
+      </div>
+
+
+      <!-- <div class="radio-button">
+        <label>Gender</label>
+        <ul>
+          <li>
+            <input type="radio" name="gender" /><span>Male</span>
+          </li>
+          <li>
+            <input type="radio" name="gender" /><span>Female</span>
+          </li>
+        </ul>
+      </div> -->
+
+      <div class="text-input">
+        <label for="crime_type">Crime Type</label>
+        <select name="caseType" id="crime_type">
+          <option value="0" selected>----- Choose crime type -----</option>
+        </select>
+      </div>
+
+      <!-- <div class="sqr-radio-input">
+        <div class="radio-button">
+          <label>Physical evidence of crime</label>
+          <ul>
+            <li>
+              <input type="checkbox" name="notes" /><span>Notes</span>
+            </li>
+            <li>
+                <input type="checkbox" name="email" /><span>email</span>
+            </li>
+            <li>
+                <input type="checkbox" name="photographs" /><span>Photographs</span>
+            </li>
+            <li>
+                <input type="checkbox" name="voice" /><span>Voice record</span>
+            </li>
+          </ul>
+        </div> -->
+      <!-- <div class="radio-button">
+          <label></label>
+          <ul>
+            <li>
+              <input type="checkbox" name="drink" /><span></span>
+            </li>
+            <li>
+              <input type="checkbox" name="drink" /><span></span>
+            </li>
+          </ul>
+        </div>
+        <div class="clearfix"></div>
+      </div> -->
+
+
+      <div class="text-input">
+        <label for="text-input">Describe the Report</label>
+        <textarea name="message" id="description"></textarea>
+      </div>
+
+      <!-- <div class="check-boxes">
+        <ul>
+          <li>
+            <input type="checkbox" name="terms" /> <span>I accept terms and conditions</span>
+          </li>
+        </ul>
+      </div> -->
+
+      <div class="upload-btn-wrapper">
+        <strong><label for="upload-text">Evidence of crime</label></strong>
+        <br />
+        <button class="btn">Upload a file</button>
+        <input id="evidence" type="file" accept="image/jpeg,image/png" name="myfile" />
+      </div>
+  </div>
+
+
+  <button class="bn4" type="submit" id="submit">Submit</button>
+  </form>
+  </body>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      toastr.options = {
+        "closeButton": true,
+        "progressBar": true
+      }
+      $("#crime_type").on('click', function () {
+        $.ajax({
+          type: "GET",
+          url: "http://localhost:5555/api/v1/category",
+          statusCode: {
+            200: function (data) {
+              (data.data).forEach(category => {
+                $('#crime_type').append(`<option value="${category.id}">
+                                       ${category.title}
+                                  </option>`);
+              });
+            },
+            404: function () {
+              $('#crime_type').append(`<option value="null">
+                                       No data available
+                                  </option>`);
+            },
+            422: function () {
+              toastr.error("Something went wrong");
+            }
+          }
+        })
+      })
+      $("form").submit(function (event) {
+        var formData = {
+          user_id: window.sessionStorage.getItem("userId"),
+          fullname: $("#fullname").val(),
+          phone_number: $("#phone").val(),
+          email: $("#email").val(),
+          crime_spot: $("#crimespot").val(),
+          street: $("#street").val(),
+          postal_code: $("#postalcode").val(),
+          city: $("#city").val(),
+          category_id: $("#crime_type").val(),
+          description: $("#description").val(),
+        };
+        $.ajax({
+          type: "POST",
+          url: "http://localhost:5555/api/v1/post-report",
+          data: formData,
+          dataType: "json",
+          encode: true,
+          statusCode: {
+            200: function (data) {
+              window.location.replace("main.html");
+            },
+            422: function () {
+              toastr.error("Something went wrong");
+            }
+          }
+        })
+
+        event.preventDefault();
+      });
+    });
+  </script>
+
+</html>

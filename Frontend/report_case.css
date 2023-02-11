@@ -1,0 +1,228 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+  }
+  
+  .container {
+    width: 550px;
+    margin: 45px auto;
+    /* background: #000; */
+    
+  }
+  
+  .clearfix {
+    clear: both;
+  }
+  
+  .form-part {
+    margin: 20px 0;
+    margin-bottom: 30px;
+    /* background: #fff; */
+  }
+  
+  .head {
+    font-size: 25px;
+    font-family: 'Josefin Sans', sans-serif;
+
+  }
+
+  .para{
+    padding-bottom: 30px;
+  }
+  
+  .text-input,
+  .radio-button,
+  .check-boxes {
+    margin-bottom: 13px;
+  }
+
+
+  
+  .text-input label,
+  .radio-button label,
+  .check-boxes label {
+    display: block;
+    margin-bottom: 3px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  
+  .radio-button label,
+  .check-boxes label {
+    margin-bottom: 7px;
+    /* font-weight: ; */
+  }
+  
+  .text-input input,
+  .text-input textarea,
+  .text-input select {
+    padding: 10px 10px;
+    display: block;
+    width: 100%;
+    border: solid 3px #ccc;
+    -moz-border-radius: 2px;
+    border-radius: 12px;
+    /* box-shadow: 0 0 6px  rgb(206, 203, 203); */
+  }
+  
+  .text-input input:hover,
+  .text-input textarea:hover,
+  .text-input select:hover {
+    box-shadow: 0 0 7px rgba(81, 203, 238, 1);
+  }
+
+  .text-input select {
+    width: 100%;
+  }
+  
+  .text-input textarea {
+    height: 100px;
+    /* box-shadow: 0 0 6px  rgb(206, 203, 203); */
+  }
+  
+  .sqr-input .text-input,
+  .sqr-radio-input .radio-button,
+  .sqr-check-input .check-boxes {
+    float: left;
+    width: 45%;
+  }
+  
+  .sqr-input .text-input:nth-child(1),
+  .sqr-radio-input .radio-button:nth-child(1),
+  .sqr-check-input .check-boxes:nth-child(1) {
+    margin-right: 10%;
+  }
+  
+  .cub-input .text-input {
+    float: left;
+    width: 26.66%;
+  }
+  
+  .cub-input .text-input:nth-child(1),
+  .cub-input .text-input:nth-child(2) {
+    margin-right: 10%;
+  }
+  .radio-button ul li,
+  .check-boxes ul li {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 30px;
+    margin-bottom: 7px;
+  }
+  
+  .sqr-radio-input .radio-button ul li,
+  .sqr-check-input .check-boxes ul li {
+    margin-right: 100px;
+    padding: auto;
+  }
+  
+  /* .radio-button ul li span {
+    display: inline-block;
+    margin-top: 8px;
+    font-family: 'Josefin Sans', sans-serif;
+  } */
+  
+  .check-boxes ul li span {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 5px;
+    font-family: 'Josefin Sans', sans-serif;
+  }
+  
+  .sqr-input .text-input .sqr-input .text-input:nth-child(1) {
+    margin-right: 15%;
+    width: 40%;
+  }
+  
+  .margin-bottom-zero {
+    margin-bottom: 0px;
+  }
+
+/*File Upload styling*/  
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btn{
+  /* background-color: #ffffff; */
+  border: solid 3px #ccc;
+  border-radius: 10px;
+  /* color: rgb(0, 0, 0); */
+  padding: 0.2em 1em;
+  text-align: center;
+  font-size: 17px;
+  margin: 4px 2px;
+  /* opacity: 0.6;
+  transition: 0.3s; */
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 0 6px  rgb(206, 203, 203);
+}
+
+/* .btn {
+  border: solid 3px #ccc;
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 0 6px  rgb(206, 203, 203);
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 17px;
+  font-weight: none;
+  cursor: pointer;
+} */
+
+.btn:hover{
+  box-shadow: 0 0 7px rgba(81, 203, 238, 1);
+  cursor: pointer;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 98px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+
+
+
+/*Button styling*/
+
+.bn4 {
+    background-color: #54dfe9;
+    /* border: solid 3px #ccc; */
+    border-radius: 10px;
+    /* color: rgb(0, 0, 0); */
+    padding: 0.7em 1.7em;
+    text-align: center;
+    font-size: 17px;
+    border: none;
+    /* margin: 4px 2px; */
+    /* opacity: 0.6;
+    transition: 0.3s; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .bn4:hover {
+    box-shadow: 0 0 25px rgba(81, 203, 238, 1);
+    
+  }
+
+  .head, .para{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+  }

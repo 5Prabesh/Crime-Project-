@@ -1,0 +1,43 @@
+{
+  "name": "crime-report-api",
+  "version": "1.0.0",
+  "main": "app.js",
+  "author": "kalyan devkota",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "nodemon src/app.js",
+    "migration:create": "npx sequelize-cli migration:create --name ",
+    "seed:create": "npx sequelize-cli seed:generate --name ",
+    "seed": " npx sequelize-cli db:seed --seed",
+    "seed:all": "npx sequelize-cli db:seed:all",
+    "migrate": "npx sequelize-cli db:migrate",
+    "migrate:undo": "npx sequelize-cli db:migrate:undo",
+    "refresh:db:all": "npm run migrate:undo:all && npm run migrate && npm run seed:all",
+    "migrate:undo:all": "npx sequelize-cli db:migrate:undo:all"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.1",
+    "compression": "^1.7.4",
+    "connect-session-sequelize": "^7.1.5",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.0",
+    "express-session": "^1.17.3",
+    "lodash": "^4.17.21",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+    "pg": "^8.8.0",
+    "sequelize": "^6.28.0",
+    "sequelize-cli": "^6.6.0",
+    "sequelize-paginate": "^1.1.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}

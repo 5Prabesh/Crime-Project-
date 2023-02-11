@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="styles/case_information.css">
+    <title>100</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!--Top menu -->
+        <div class="sidebar">
+            <div class="profile">
+                <img src="police_image.jpg" alt="profile_picture">
+                <h3>Avan Adam</h3>
+                <!-- <p>Police officer_nmae</p> -->
+            </div>
+            <ul>
+                <li>
+                    <a href="report.html">
+                        <span class="item">Report</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="crime_category.html">
+                        <span class="item">Crime Category</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="case_information.html">
+                        <span class="item">Case Information</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Table -->
+        <div class="container">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2>Case Information</h2>
+                        </div>
+                        <div class="col-sm-6">
+                            <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i
+                                    class="material-icons">&#xE147;</i> <span>Add new case Information</span></a>
+                            <!-- <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i
+                                    class="material-icons">&#xE15C;</i> <span>Delete</span></a> -->
+                        </div>
+                    </div>
+                </div>
+                <table id="case-information" class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                <span class="custom-checkbox">
+                                    <input type="checkbox" id="selectAll">
+                                    <label for="selectAll"></label>
+                                </span>
+                            </th>
+                            <th>Title</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <!-- Pagination -->
+                <!-- <div class="clearfix">
+                    <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+                    <ul class="pagination">
+                        <li class="page-item disabled"><a href="#">Previous</a></li>
+                        <li class="page-item"><a href="#" class="page-link">1</a></li>
+                        <li class="page-item"><a href="#" class="page-link">2</a></li>
+                        <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                        <li class="page-item"><a href="#" class="page-link">4</a></li>
+                        <li class="page-item"><a href="#" class="page-link">5</a></li>
+                        <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                    </ul>
+                </div> -->
+            </div>
+        </div>
+
+        <!-- View Modal HTML -->
+        <div id="addEmployeeModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h4 class="modal-title">Add Case Information</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input id="title" type="text" class="form-control" required>
+                            </div>
+                            <!-- <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" class="form-control" required>
+                            </div> -->
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea id="description" class="form-control" required></textarea>
+                            </div>
+                            <!-- <div class="form-group">
+                                <label>Phone</label>
+                                <input type="text" class="form-control" required>
+                            </div> -->
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                            <input type="submit" class="btn btn-success" value="Add">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- View Modal HTML -->
+        <div class="modal fade view-detail">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h4 class="modal-title">Case Information</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input id="view_title" type="text" class="form-control" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea id="view_description" class="form-control" disabled></textarea>
+                                <!-- <input type="text" class="form-control" required> -->
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                            <input type="submit" class="btn btn-info" value="Save">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Approve Modal HTML -->
+        <!-- <div id="approveEmployeeModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h4 class="modal-title">Approve Report</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to approve this Report?</p>
+                            <p class="text-warning"><small>This action cannot be undone.</small></p>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                            <input type="submit" class="btn btn-danger" value="Approve">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div> -->
+
+        <!-- Reject Modal HTML -->
+        <div class="modal fade reject-report">
+
+        </div>
+
+
+    </div>
+
+
+
+</body>
+<script src="//cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<script>
+    function viewReport(reportId) {
+        $(".view-detail").attr("id", `viewEmployeeModal_${reportId}`)
+        $.ajax({
+            type: "GET",
+            url: `http://localhost:5555/api/v1/case-information/${reportId}`,
+            statusCode: {
+                200: function (data) {
+                    $("#view_title").attr("value", `${data.data.title}`);
+                    $("#view_description").val(`${data.data.description}`)
+                },
+                404: function () {
+                    toastr.error("No data available");
+                },
+                422: function () {
+                    toastr.error("Something went wrong");
+                }
+            }
+        })
+    }
+
+    function rejectReport(reportId) {
+        $.ajax({
+            type: "DELETE",
+            url: `http://localhost:5555/api/v1/delete-case-information/${reportId}`,
+            statusCode: {
+                200: function (data) {
+                    window.location.reload();
+                },
+                422: function () {
+                    toastr.error("Something went wrong");
+                }
+            }
+        })
+        event.preventDefault();
+    }
+
+    function rejectReportView(reportId) {
+        $(".reject-report").attr("id", `rejectEmployeeModal_${reportId}`)
+        $(`#rejectEmployeeModal_${reportId}`).html(
+            `
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h4 class="modal-title">Delete Case Information</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to delete?</p>
+                            <div class="form-group">
+                                <!-- <label>Full Name</label> -->
+                                <!-- <input type="text" class="form-control" required> -->
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                            <input type="submit" onclick="rejectReport(${reportId})" class="btn btn-danger" value="Delete">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            `
+        );
+    }
+
+    $(document).ready(function () {
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true
+        }
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:5555/api/v1/case-information",
+            statusCode: {
+                200: function (data) {
+                    (data.data).forEach(category => {
+                        var newRowContent =
+                            `
+            <tr>
+                            <td>${category.id} </td>
+                            <td>${category.title}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <a href="#viewEmployeeModal_${category.id}" onclick="viewReport(${category.id})" class="edit" data-toggle="modal"><i class="material-icons"
+                                        data-toggle="tooltip" title="Edit">&#xe56b;</i></a>
+                                <a href="#rejectEmployeeModal_${category.id}" onclick="rejectReportView(${category.id})" class="delete" data-toggle="modal"><i
+                                        class="material-icons" data-toggle="tooltip" title="Reject">&#xe5cd;</i></a>
+
+                            </td>
+                            
+            </tr> 
+            `
+                        $("#case-information tbody").append(newRowContent);
+                    });
+                },
+                404: function () {
+                    var newRowContent =
+                        `
+            <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                No data available
+                            </td>
+            </tr> 
+            `
+                    $("#case-information tbody").append(newRowContent);
+                },
+                422: function () {
+                    toastr.error("Something went wrong");
+                }
+            }
+        })
+    });    
+</script>
+
+<script>
+    $(document).ready(function () {
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true
+        }
+        $("form").submit(function (event) {
+            var formData = {
+                title: $("#title").val(),
+                description: $("#description").val()
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:5555/api/v1/post-case-information",
+                data: formData,
+                dataType: "json",
+                encode: true,
+                statusCode: {
+                    200: function () {
+                        window.location.reload();
+                    },
+                    422: function () {
+                        toastr.error("Something went wrong");
+                    }
+                }
+            })
+
+            event.preventDefault();
+        });
+    });
+</script>
+
+</html>

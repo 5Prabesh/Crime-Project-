@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+  <link rel="stylesheet" href="styles/login_style.css">
+  <title>100</title>
+</head>
+
+<body>
+
+  <body class="login"></body>
+  <div class="animated bounceInDown">
+    <div class="container">
+      <form class="box" name="form1" onsubmit="return validateform()">
+        <h4>Admin<span> Dashboard</span></h4>
+        <h5>Sign in to your account.</h5>
+        <input id="email" type="text" name="email" placeholder="Email" autocomplete="off" name="email" required>
+        <input id="password" type="password" name="password" placeholder="Passsword" id="pwd" autocomplete="off"
+          name="password" required>
+        <input class="btn1" type="submit" value="Sign in" name="sign_in">
+      </form>
+    </div>
+  </div>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <!-- <script>
+
+    function validateform() {
+      var email = document.form1.email.value;
+      var atposition = x.indexOf("@");
+      var dotposition = x.lastIndexOf(".");
+      var password = document.form1.password.value;
+
+      if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= email.length) {
+        alert("Please enter a valid e-mail address \n atpostion:" + atposition + "\n dotposition:" + dotposition);
+        return false;
+      }
+      else if (password.length < 6) {
+        alert("Password must be at least 6 characters long.");
+        return false;
+      }
+    }   
+  </script> -->
+  <script>
+    $(document).ready(function () {
+      toastr.options = {
+        "closeButton": true,
+        "progressBar": true
+      }
+      $("form").submit(function (event) {
+        var formData = {
+          password: $("#password").val(),
+          email: $("#email").val(),
+        };
+
+        $.ajax({
+          type: "POST",
+          url: "http://localhost:5555/api/v1/auth/login-admin",
+          data: formData,
+          dataType: "json",
+          encode: true,
+          statusCode: {
+            200: function (data) {
+              window.location.replace("report.html");
+            },
+            401: function () {
+              toastr.error("Invalid password");
+            },
+            403: function () {
+              toastr.error("Username and password do not match");
+            },
+            422: function () {
+              toastr.error("Something went wrong");
+            }
+          }
+        })
+
+        event.preventDefault();
+      });
+    });
+  </script>
+</body>
+
+</html>

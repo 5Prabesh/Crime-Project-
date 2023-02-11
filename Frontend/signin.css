@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* body */
+body {
+  background: #e9e9e9;
+  color: #5e5e5e;
+}
+
+/* Form Layout */
+.form_box {
+  background: #fafafa;
+  margin: 3em auto;
+  padding: 0 1em;
+  max-width: 370px;
+}
+
+h1 {
+  text-align: center;
+  padding: 1em 0;
+}
+
+form {
+  padding: 0 1.5em;
+}
+
+.form_content {
+  margin-bottom: 0.75em;
+  width: 100%;
+}
+
+.form_content input {
+  background: #fafafa;
+  border: none;
+  border-bottom: 2px solid #e9e9e9;
+  color: #666;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1em;
+  height: 50px;
+  transition: border-color 0.3s;
+  width: 100%;
+}
+
+.form_content input:focus {
+  border-bottom: 2px solid #c0c0c0;
+  outline: none;
+}
+
+.button-panel {
+  margin: 2em 0 0;
+  width: 100%;
+}
+
+.button-panel .button {
+    width: 100%;
+    text-align: center;
+    background: rgb(135, 148, 235);
+    color: #fff;
+    border: none;
+    height: 2.5em;
+    text-transform: uppercase;
+    font-size: 1.2em;
+    letter-spacing: 0.05em;
+    transition: background 0.3s ease-in-out;
+    border-radius: 10px;
+}
+
+.button:hover {
+  background: rgb(53, 60, 103);
+  cursor: pointer;
+}
+
+.form-footer {
+  font-size: 1em;
+  padding: 2em 0;
+  text-align: center;
+}
+
+.form-footer a {
+  color: #8c8c8c;
+  text-decoration: none;
+  transition: border-color 0.3s;
+}
+
+.form-footer a:hover {
+  border-bottom: 1px dotted #8c8c8c;
+}
+
+.down {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.top{
+  font-family: "Open Sans", sans-serif;
+  /* margin-bottom: 200px; */
+}
+
+  .radio{
+    font-family: "Open Sans", sans-serif;
+    margin-right: 130px;
+    padding: 10px 0px 10px 0px;
+    gap: 20px;
+  }
+
+  .radio input {
+    background: #fafafa;
+    /* border: none; */
+    border-bottom: 2px solid #e9e9e9;
+    color: #666;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1em;
+    transition: border-color 0.3s;
+    margin-top: 10px;
+  }
+
+  .radio input:focus {
+    border-bottom: 2px solid #c0c0c0;
+    outline: none;
+  }
+
+  .file{
+    margin-top: 10px;
+  }
+
+  .down p a{
+    text-decoration: none;
+    color: rgb(135, 148, 235);
+    margin-bottom: 30px;
+  }

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+  <link rel="stylesheet" href="signin.css">
+  <script src="script.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="form_box">
+    <h1>Sign In</h1>
+    <form name="signin" onsubmit="return validateSignin()">
+      <div class="form_content">
+        <label for="email"></label>
+        <input type="text" name="email" required="required" id="email" placeholder="Email Address"></input>
+      </div>
+      <div class="form_content">
+        <label for="password"></label>
+        <input type="password" name="password" required="required" id="password" placeholder="Password"></input>
+      </div>
+      <div class="button-panel">
+        <input type="submit" class="button" title="Sign In" value="Sign In"></input>
+      </div>
+    </form>
+    <div class="form-footer">
+      <p><a href="signup.html">New here? &nbsp;<span style="color: rgb(135, 148, 235)">Create Account</span> </a></p>
+    </div>
+    <div class="down">
+      <p><a href="index.html">Go Back <i></i></a></p>
+    </div>
+
+  </div>
+  <footer>Copyright © Dial100 2023 Right Reserved.</footer>
+
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      toastr.options = {
+        "closeButton": true,
+        "progressBar": true
+      }
+      $("form").submit(function (event) {
+        var formData = {
+          email: $("#email").val(),
+          password: $("#password").val(),
+        };
+
+        $.ajax({
+          type: "POST",
+          url: "http://localhost:5555/api/v1/auth/login-user",
+          data: formData,
+          dataType: "json",
+          encode: true,
+          statusCode: {
+            200: function (data) {
+              window.sessionStorage.setItem("userId", `${data.data.user_id}`);
+              window.location.replace("main.html");
+            },
+            401: function () {
+              toastr.error("Invalid password");
+            },
+            403: function () {
+              toastr.error("User doesn't exist. Please signup first");
+            },
+            422: function () {
+              toastr.error("Something went wrong");
+            }
+          }
+        })
+
+        event.preventDefault();
+      });
+    });
+  </script>
+
+</body>
+
+</html>
